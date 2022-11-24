@@ -22,9 +22,9 @@
         displayTopic = false;
 
         try {
-            let response = await axios.get(`${'http://127.0.0.1:8991'}/topic/random`);
+            let response = await axios.get(`${env.PUBLIC_BASE_URL}/topic/random`);
             while (seen.includes(response.data.id)) {
-                response = await axios.get(`${'http://127.0.0.1:8991'}/topic/random`);
+                response = await axios.get(`${env.PUBLIC_BASE_URL}/topic/random`);
             }
             seen.push(response.data.id);
             topic = response.data.topic;
