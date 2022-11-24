@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    environment:
+      - PASSWORD=example1234
+    ports:
+      - "8991:8991"
+    volumes:
+      - "./data:/app/data"
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    environment:
+      PUBLIC_BASE_URL: http://localhost:8991
+    ports:
+      - "5050:5050"
